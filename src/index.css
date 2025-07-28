@@ -120,3 +120,37 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .glass-morphism {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .float-effect {
+    box-shadow: var(--shadow-float);
+  }
+
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift {
+    @apply smooth-transition hover:scale-105 hover:-translate-y-2;
+  }
+
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary-bg {
+    background: var(--gradient-secondary);
+  }
+}

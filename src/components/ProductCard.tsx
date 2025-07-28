@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Star, ShoppingCart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Product, useCart } from '@/contexts/CartContext';
-import { useToast } from '@/hooks/use-toast';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Star, ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Product, useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   product: Product;
@@ -26,7 +26,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <Link to={`/product/${product.id}`}>
-      <Card className="group hover:shadow-lg transition-shadow duration-200 h-full">
+      <Card
+        className="group hover:shadow-2xl transition-shadow duration-300 h-full 
+  bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/30 rounded-2xl shadow-lg"
+      >
         <CardContent className="p-4">
           <div className="aspect-square relative overflow-hidden rounded-lg mb-4">
             <img
@@ -40,12 +43,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               </div>
             )}
           </div>
-          
+
           <div className="space-y-2">
             <h3 className="font-semibold line-clamp-2 group-hover:text-primary transition-colors">
               {product.name}
             </h3>
-            
+
             <div className="flex items-center gap-1">
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (
@@ -53,8 +56,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     key={i}
                     className={`h-4 w-4 ${
                       i < Math.floor(product.rating)
-                        ? 'fill-rating text-rating'
-                        : 'text-muted-foreground'
+                        ? "fill-rating text-rating"
+                        : "text-muted-foreground"
                     }`}
                   />
                 ))}
@@ -63,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 ({product.reviews})
               </span>
             </div>
-            
+
             <div className="flex items-center justify-between">
               <span className="text-2xl font-bold text-primary">
                 ${product.price}
@@ -74,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </div>
           </div>
         </CardContent>
-        
+
         <CardFooter className="p-4 pt-0">
           <Button
             onClick={handleAddToCart}
@@ -83,7 +86,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             size="sm"
           >
             <ShoppingCart className="h-4 w-4 mr-2" />
-            {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+            {product.inStock ? "Add to Cart" : "Out of Stock"}
           </Button>
         </CardFooter>
       </Card>
