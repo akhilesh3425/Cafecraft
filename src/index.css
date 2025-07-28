@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Updated Design System for a Modern, Coffee-Themed Website */
+
+@layer base {
+  :root {
+    --background: 36 100% 98%; /* Creamy beige */
+    --foreground: 30 10% 10%; /* Deep charcoal */
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 10%;
+
+    --primary: 30 60% 30%; /* Coffee brown */
+    --primary-foreground: 36 100% 98%;
+
+    --secondary: 36 56% 90%; /* Light caramel */
+    --secondary-foreground: 30 15% 20%;
+
+    --muted: 36 30% 85%;
+    --muted-foreground: 30 10% 40%;
+
+    --accent: 36 30% 85%;
+    --accent-foreground: 30 10% 20%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 15% 90%;
+    --input: 30 15% 90%;
+    --ring: 30 60% 30%;
+
+    --radius: 0.5rem;
+
+    /* Extra system colors */
+    --success: 142 60% 40%;
+    --success-foreground: 36 100% 98%;
+
+    --warning: 40 90% 50%;
+    --warning-foreground: 30 15% 20%;
+
+    --info: 200 90% 50%;
+    --info-foreground: 36 100% 98%;
+
+    --rating: 45 90% 50%;
+    --rating-foreground: 36 100% 98%;
+
+    --price: 5 75% 50%; /* Warm red-orange */
+    --price-foreground: 36 100% 98%;
+
+    --sale: 142 60% 35%;
+    --sale-foreground: 36 100% 98%;
+
+    --sidebar-background: 36 100% 97%;
+    --sidebar-foreground: 30 10% 15%;
+
+    --sidebar-primary: 30 50% 25%;
+    --sidebar-primary-foreground: 36 100% 98%;
+
+    --sidebar-accent: 36 70% 90%;
+    --sidebar-accent-foreground: 30 10% 25%;
+
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 30 60% 30%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 36 100% 98%;
+
+    --card: 30 15% 12%;
+    --card-foreground: 36 100% 98%;
+
+    --popover: 30 15% 12%;
+    --popover-foreground: 36 100% 98%;
+
+    --primary: 30 60% 40%;
+    --primary-foreground: 36 100% 98%;
+
+    --secondary: 30 25% 20%;
+    --secondary-foreground: 36 100% 98%;
+
+    --muted: 30 20% 18%;
+    --muted-foreground: 30 20% 70%;
+
+    --accent: 30 20% 20%;
+    --accent-foreground: 36 100% 98%;
+
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 36 100% 98%;
+
+    --border: 30 15% 25%;
+    --input: 30 15% 25%;
+    --ring: 30 60% 40%;
+
+    --sidebar-background: 30 15% 8%;
+    --sidebar-foreground: 36 100% 98%;
+
+    --sidebar-primary: 30 50% 25%;
+    --sidebar-primary-foreground: 36 100% 98%;
+
+    --sidebar-accent: 30 20% 15%;
+    --sidebar-accent-foreground: 36 100% 98%;
+
+    --sidebar-border: 30 15% 25%;
+    --sidebar-ring: 30 60% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
