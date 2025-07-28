@@ -23,8 +23,11 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#F3E5AB] border-b shadow-md">
-      <div className="container mx-auto px-4 py-4">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#f3e5ab]/50 border-b border-[#f3e5ab]/30 shadow-md">
+      <div
+        className="container mx-auto px-4 py-4 bg-[url('/benjamin-wedemeyer-HHx_8m6-YNk-unsplash.jpg')] bg-cover bg-center rounded-xl bg-opacity-20"
+        style={{ backgroundBlendMode: "overlay" }}
+      >
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold font-serif text-[#6f4e37]">
