@@ -16,7 +16,7 @@ export const products: Product[] = [
   },
   {
     id: "2",
-    name: "Smart Watch",
+    name: "Nescafe",
     price: 18.99,
     image: nescafeSachet2,
     description: "Aromatic and rich coffee.",

@@ -20,6 +20,12 @@ const Login: React.FC = () => {
 
   const from = location.state?.from?.pathname || "/";
 
+  const handleGoogleSignIn = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+    if (error) console.error("Error logging in with Google:", error.message);
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -91,6 +97,13 @@ const Login: React.FC = () => {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
+            <button
+              type="submit"
+              className="text-primary hover:underline"
+              onClick={handleGoogleSignIn}
+            >
+              Sign in with Google
+            </button>
           </form>
 
           <div className="mt-6 text-center">
