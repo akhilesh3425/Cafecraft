@@ -74,19 +74,44 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
   // Load user from localStorage on mount
   useEffect(() => {
-    const getSession = async () => {
-      const { data, error } = await supabase.auth.getSession();
-      const session = data?.session;
+    const handleInitialSession = async () => {
+      setIsLoading(true);
 
-      if (session?.user) {
-        setUser(formatUsers(session.user));
+      // 1. Check if it's an OAuth redirect with access_token in hash
+      if (window.location.hash.includes("access_token")) {
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) {
+          console.error("Error getting session from URL", error.message);
+          setIsLoading(false);
+          return;
+        }
+
+        if (data.session?.user) {
+          setUser(formatUsers(data.session.user));
+          // Clear the hash from the URL
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          );
+        }
+      } else {
+        // 2. Regular app load: just get existing session
+        const { data } = await supabase.auth.getSession();
+        const session = data?.session;
+
+        if (session?.user) {
+          setUser(formatUsers(session.user));
+        }
       }
+
       setIsLoading(false);
     };
 
-    getSession();
+    handleInitialSession();
 
-    // Listen to auth state changes
+    // 3. Listen to auth changes (already correct)
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         if (session?.user) {
@@ -96,6 +121,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         }
       }
     );
+
     return () => {
       listener.subscription.unsubscribe();
     };

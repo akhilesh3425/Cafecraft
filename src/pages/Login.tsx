@@ -23,9 +23,13 @@ const Login: React.FC = () => {
   const handleGoogleSignIn = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+        redirectTo: "http://localhost:8080",
+      },
     });
     if (error) console.error("Error logging in with Google:", error.message);
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -98,7 +102,7 @@ const Login: React.FC = () => {
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
             <button
-              type="submit"
+              type="button"
               className="text-primary hover:underline"
               onClick={handleGoogleSignIn}
             >
