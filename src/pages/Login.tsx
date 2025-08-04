@@ -21,12 +21,16 @@ const Login: React.FC = () => {
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = async () => {
+    const redirectTo =
+      window.location.origin === "http://localhost:8080"
+        ? "http://localhost:8080"
+        : "https://cafecraft-1.onrender.com"; // ✅ your Render URL here
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: {
-        redirectTo: "http://localhost:8080",
-      },
+      options: { redirectTo },
     });
+
     if (error) console.error("Error logging in with Google:", error.message);
   };
 
